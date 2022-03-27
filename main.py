@@ -7,6 +7,8 @@ import json
 
 # --------------------------- SEARCH ----------------------------
 
+
+
 def search():
     website = website_input.get()
     try:
@@ -22,6 +24,8 @@ def search():
             messagebox.showinfo(title="Ooops...", message="This website is not saved.")
 
 # ---------------------------- PASSWORD GENERATOR -------------------------------
+
+
 def generate_password():
 
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -78,6 +82,7 @@ def validate():
             }
             save(new_data)
 # ---------------------------- UI SETUP ------------------------------- #
+
 
 window = Tk()
 window.title("Password Manager")
