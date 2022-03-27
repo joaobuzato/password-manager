@@ -29,15 +29,19 @@ def generate_password():
 
 
 def save(new_data):
-    with open("data.json", "r") as file:
-
-        data = json.load(file)
+    try:
+        with open("data.json", "r") as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        with open("data.json", "w") as file:
+            json.dump(new_data, file, indent=4)
+    else:
         data.update(new_data)
-    with open("data.json", "w") as file:
-        json.dump(data, file, indent=4)
-
-    website_input.delete(0, END)
-    password_input.delete(0, END)
+        with open("data.json", "w") as file:
+            json.dump(data, file, indent=4)
+    finally:
+        website_input.delete(0, END)
+        password_input.delete(0, END)
 
 
 def validate():
