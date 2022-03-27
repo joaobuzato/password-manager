@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -7,18 +8,20 @@ from tkinter import *
 def save(website, username, password):
     with open("data.txt", "a") as file:
         file.write(f"{website} | {username} | {password} \n")
-        website_input.delete(0, 'end')
-        password_input.delete(0, 'end')
+        website_input.delete(0, END)
+        password_input.delete(0, END)
 
 
 def validate():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
-    if website is None or username is None or password is None:
-        print("All of the fields must be filled!")
+
+    if len(website) == 0 or len(username) == 0 or len(password) ==0:
+        messagebox.showinfo(title="Ooops...", message="Hey, you left some fiels are empty")
     else:
-        save(website, username, password)
+        if messagebox.askokcancel(title=website, message=f"Are you fine with this details? \n {username} \n {password}"):
+            save(website, username, password)
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
