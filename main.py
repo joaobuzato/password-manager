@@ -4,6 +4,23 @@ from tkinter import messagebox
 import random
 import pyperclip
 import json
+
+# --------------------------- SEARCH ----------------------------
+
+def search():
+    website = website_input.get()
+    try:
+        with open("data.json", "r") as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Ooops...", message="No Data File Found")
+    else:
+        credentials = data.get(website)
+        if credentials is not None:
+            messagebox.showinfo(title=website, message=f"username: {credentials.get('username')} \npassword: {credentials.get('password')}")
+        else:
+            messagebox.showinfo(title="Ooops...", message="This website is not saved.")
+
 # ---------------------------- PASSWORD GENERATOR -------------------------------
 def generate_password():
 
@@ -72,8 +89,10 @@ logo.create_image(100, 100, image=logo_img)
 logo.grid(column=1, row=0)
 website_lb = Label(text="Website:")
 website_lb.grid(column=0, row=1)
-website_input = Entry(width=40)
-website_input.grid(column=1, row=1, columnspan=2)
+website_input = Entry(width=20)
+website_input.grid(column=1, row=1)
+search_button = Button(text="Search", command=search, width=16)
+search_button.grid(row=1, column=2)
 website_input.focus()
 username_lb = Label(text="Username/Email:")
 username_lb.grid(column=0, row=2)
@@ -83,7 +102,7 @@ username_input.insert(0, "joaobuzato@gmail.com")
 password_lb = Label(text="Password:")
 password_lb.grid(column=0, row=3)
 password_input = Entry(width=20)
-password_input.grid(row=3,column=1)
+password_input.grid(row=3, column=1)
 generate_pw_button = Button(text="Generate Password", width=16, command=generate_password)
 generate_pw_button.grid(row=3, column=2)
 add_button = Button(text="Add", width=37, command=validate)
