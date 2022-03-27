@@ -7,9 +7,10 @@ from tkinter import *
 
 window = Tk()
 window.title("Password Manager")
+window.config(padx=20, pady=20)
 logo = Canvas(width=200, height=200)
 logo_img = PhotoImage(file="logo.png")
-logo.create_image(100,100, image=logo_img)
+logo.create_image(100, 100, image=logo_img)
 
 logo.grid(column=1,row=1)
 
