@@ -39,7 +39,7 @@ def validate():
     password = password_input.get()
 
     if len(website) == 0 or len(username) == 0 or len(password) ==0:
-        messagebox.showinfo(title="Ooops...", message="Hey, you left some fiels are empty")
+        messagebox.showinfo(title="Ooops...", message="Hey, you left some fields empty")
     else:
         if messagebox.askokcancel(title=website, message=f"Are you fine with this details? \n {username} \n {password}"):
             save(website, username, password)
